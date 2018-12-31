@@ -1,0 +1,58 @@
+<h2>{{titulo}}</h2>
+<p>Añadir marca</p>
+<p><input type="text" [(ngModel)]="mi_marca" (keyup.enter)="mostrarPalabra()"></p>
+<button (click)="getMarca()">Mostrar marca</button>
+<button (click)="addMarca()">Agregar marca</button>
+<p>{{mi_marca}}</p>
+<p>
+    compra las zapatillas de las mejores marcas
+</p>
+<ul>
+    <li *ngFor="let marca of marcas; let indice = index">
+        {{indice + " "+ marca}}
+        <button (click)="dropMarca(indice)">Drop</button>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let zapatilla of zapatillas">
+        <span [ngStyle]="{
+                'text-decoration': !zapatilla.stock ? 'line-through': 'none'
+        }">
+            {{zapatilla.nombre}} - 
+            <strong 
+                [class.altoPrecio]="zapatilla.precio > 100"
+                [ngClass]="{
+                    'fondoPrecio': zapatilla.precio > 100,
+                    'negrita': zapatilla.marca == 'Nick'
+                }"
+            >
+                {{zapatilla.precio}}$
+            </strong>
+        </span>
+        
+        <span *ngIf="zapatilla.precio<=80"
+            [style.background]="zapatilla.precio<=80 ? 'green' : 'transparent'"
+            [style.color]="zapatilla.precio<=80 ? 'white' : 'black'"
+            >En oferta</span>
+    </li>
+</ul>
+
+<p>El color de la mayoria de nuestras zapatillas es:</p>
+<input type="text" [(ngModel)]="color">
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'yellow'">
+        <span [ngStyle]="{
+            'background': color
+        }">Amarillo</span>
+        
+    </li>
+    <li *ngSwitchCase="'white'">
+        blanco
+    </li>
+    <li *ngSwitchCase="'red'">
+        <span [ngStyle]="{
+            'background': color
+        }">Rojo</span>
+    </li>
+</ul>

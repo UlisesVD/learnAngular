@@ -1,0 +1,16 @@
+.altoPrecio{
+    color: gray;
+    font-size: 18px;
+}
+
+.fondoPrecio{
+    background: #000080;
+}
+
+.negrita{
+    font-weight: bold;
+}
+
+.active{
+    border: 3px solid yellow;
+}
